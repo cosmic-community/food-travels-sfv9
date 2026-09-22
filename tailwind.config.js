@@ -7,10 +7,27 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        cream: '#FBF7F0',
+        sand: '#EFE4D2',
+        charcoal: '#2B2A28',
+        terracotta: {
+          DEFAULT: '#C8553D',
+          light: '#E07A5F',
+          dark: '#A3402B',
+        },
+        saffron: '#F2A541',
+        olive: '#6B7F3A',
+        sage: '#9CAF88',
+        paprika: '#B23A2B',
+        spice: '#8C4A2F',
+      },
       fontFamily: {
-        sans: ['var(--font-inter)', 'sans-serif'],
+        sans: ['Inter', 'var(--font-inter)', 'system-ui', 'sans-serif'],
+        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+        display: ['"Playfair Display"', 'Georgia', 'serif'],
       },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
 };

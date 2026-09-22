@@ -15,12 +15,17 @@ export async function getCosmic(): Promise<GetCosmicResult> {
     return { cosmic, previewToken: undefined }
   }
 
-  const previewCosmic = createBucketClient({
+  // previewToken is passed through to the SDK at runtime, but it is not
+  // declared on BucketConfig in every SDK version, so build the config
+  // separately and cast it to keep the type check happy.
+  const previewConfig = {
     bucketSlug: process.env.COSMIC_BUCKET_SLUG as string,
     readKey: process.env.COSMIC_READ_KEY as string,
     writeKey: process.env.COSMIC_WRITE_KEY as string,
     previewToken,
-  })
+  } as Parameters<typeof createBucketClient>[0]
+
+  const previewCosmic = createBucketClient(previewConfig)
 
   return { cosmic: previewCosmic, previewToken }
 }

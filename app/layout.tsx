@@ -4,6 +4,10 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import CosmicBadge from '@/components/CosmicBadge'
 
+// Render all routes at request time. Pages fetch live Cosmic content (and
+// read preview cookies), which fails when forced into static prerendering at build.
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
   title: 'Food Travels | Culinary Adventures Around the World',
   description:
